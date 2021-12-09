@@ -123,7 +123,7 @@ export default Ember.Component.extend(NodeDriver, {
           step: 2,
           restricted: responses.regions.restricted,
           regionChoices: responses.regions.data.map(region => { region.label = region.id.slice(0, 4).toUpperCase() + region.id.slice(4) + " (" + region.country.toUpperCase() + ")"; return region }).sort((a, b) => String.prototype.localeCompare(a, b)),
-          imageChoices: responses.images.data.filter(image => /^linode.(ubuntu18.04|ubuntu16.04|debian9)/.test(image.id)),
+          imageChoices: responses.images.data.filter(image => /^linode.(ubuntu21.04|ubuntu20.04|ubuntu18.04|ubuntu16.04|debian9)/.test(image.id)),
           sizeChoices: responses.sizes.data.map(size => { size.disk /= 1024; size.memory /= 1024; return size }),
         });
       }).catch((err) => {
@@ -138,7 +138,7 @@ export default Ember.Component.extend(NodeDriver, {
         this.setProperties({ errors, });
 
         cb();
-      }); 
+      });
     },
   }
 });
